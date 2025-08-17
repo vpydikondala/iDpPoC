@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-org/idp-backstage-argocd-poc.git   # CHANGE ME
+    repoURL: https://github.com/vpydikondala/iDpPoC.git   # CHANGE ME
     targetRevision: HEAD
     path: k8s/argocd/apps
     directory: { recurse: true }

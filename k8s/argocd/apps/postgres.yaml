@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://charts.bitnami.com/bitnami
     chart: postgresql
-    targetRevision: "*"   # pin a stable version later
+   # targetRevision: "*"   # pin a stable version later
     helm:
       values: |
         global:

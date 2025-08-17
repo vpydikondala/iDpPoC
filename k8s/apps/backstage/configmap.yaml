@@ -1,10 +1,22 @@
 apiVersion: v1
 kind: ConfigMap
-metadata: { name: backstage-config }
+metadata:
+  name: backstage-config
 data:
   app-config.yaml: |
-    app: { title: "Backstage – IDP PoC" }
-    backend: { baseUrl: http://localhost:7007 }
+    app:
+      title: "Backstage – IDP PoC"
+    backend:
+      baseUrl: http://localhost:7007
+      database:
+        client: pg
+        connection:
+          host: ${POSTGRES_HOST}
+          port: 5432
+          user: ${POSTGRES_USER}
+          password: ${POSTGRES_PASSWORD}
+          database: ${POSTGRES_DB}
+        pluginDivisionMode: schema
     catalog:
       locations:
         - type: file

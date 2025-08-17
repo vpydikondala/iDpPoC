@@ -1,0 +1,6 @@
+app: { title: "Backstage – IDP PoC" }
+backend: { baseUrl: http://localhost:7007 }
+catalog:
+  locations:
+    - type: url
+      target: https://raw.githubusercontent.com/your-org/your-repo/main/backstage/catalog-info.yaml

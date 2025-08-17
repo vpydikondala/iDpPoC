@@ -1,0 +1,6 @@
+apiVersion: v2
+name: sample-service
+description: A tiny sample service for the IDP golden path
+type: application
+version: 0.1.0
+appVersion: "0.1.0"

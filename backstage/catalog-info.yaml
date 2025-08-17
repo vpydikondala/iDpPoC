@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage
+  description: Backstage portal for the IDP PoC
+spec:
+  type: website
+  owner: platform-team
+  lifecycle: production

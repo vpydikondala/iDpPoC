@@ -1,0 +1,37 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: golden-path-service
+  title: Golden Path - Service (Helm + ArgoCD)
+  description: Scaffold a new service with Helm chart, Argo CD Application, catalog metadata, and CI stub.
+spec:
+  owner: platform-team
+  type: service
+  parameters:
+    - title: Service metadata
+      required: [ name, owner ]
+      properties:
+        name:  { type: string, description: "Service name (DNS friendly)" }
+        owner: { type: string,  description: "Owning team (e.g., team-a)" }
+  steps:
+    - id: fetch-base
+      name: Fetch skeleton
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values: { name: '{{ parameters.name }}', owner: '{{ parameters.owner }}' }
+    # - id: publish
+    #   name: Publish to GitHub (optional)
+    #   action: publish:github
+    #   input:
+    #     repoUrl: github.com?owner=YOUR_ORG&repo={{ parameters.name }}
+    #     defaultBranch: main
+    #     protectDefaultBranch: true
+    - id: register
+      name: Register in catalog
+      action: catalog:register
+      input: { repoContentsUrl: ./, catalogInfoPath: catalog-info.yaml }
+  output:
+    links:
+      - title: Open the service in Backstage
+        url: '{{ steps.register.output.entityRef | parseEntityRef | entityUrl }}'

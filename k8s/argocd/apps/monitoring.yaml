@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: monitoring
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-org/idp-backstage-argocd-poc.git   # CHANGE ME
+    targetRevision: HEAD
+    path: k8s/apps/monitoring
+    helm:
+      valueFiles: [kube-prometheus-stack-values.yaml]
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitoring
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    syncOptions: [ "CreateNamespace=true" ]

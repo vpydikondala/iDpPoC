@@ -11,7 +11,7 @@ data:
       database:
         client: pg
         connection:
-          host: ${POSTGRES_HOST}
+          host: postgres-postgresql.platform.svc.cluster.local
           port: 5432
           user: ${POSTGRES_USER}
           password: ${POSTGRES_PASSWORD}
